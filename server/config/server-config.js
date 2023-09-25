@@ -3,5 +3,3 @@ import dotenv from 'dotenv'
 // constants
 import { GLOBAL } from '../constants/index.js'
 dotenv.config()
-
-console.log(GLOBAL.apiBase)
