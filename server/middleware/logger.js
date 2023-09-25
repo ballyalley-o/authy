@@ -1,16 +1,20 @@
 import 'colors'
 
-// const logger = (logType, msg, color) => {}
-
 const logger = {
+  // custom
+  custom: (message, color) => console.log(message[color]),
   // error LOG
   error: (message) => console.log(message.bgRed),
+  // info
+  info: (message) => console.log(message.bgBlue),
   // server LOG
   server: (PORT, isConnected) => {
     if (isConnected) {
-      return console.log('SERVER PORT: CONNECTED', PORT.blue)
+      console.log('SERVER PORT: '.bgCyan, PORT)
+      console.log('SERVER STATUS: CONNECTED'.bgCyan)
     } else {
-      return console.log('SERVER PORT: DISCONNECTED', PORT.red)
+      console.log('SERVER PORT: ', PORT)
+      console.log('SERVER STATUS: NOT CONNECTED'.red)
     }
   },
   // db LOGS
