@@ -1,12 +1,8 @@
 import express from 'express'
-import dotenv from 'dotenv'
 // constants
 import { GLOBAL } from '../constants/index.js'
 import { logger, serverResponse } from '../middleware/index.js'
 // logger
-dotenv.config({
-  path: './server/config/.env',
-})
 
 class App {
   constructor() {

@@ -10,11 +10,11 @@ const logger = {
   // server LOG
   server: (PORT, isConnected) => {
     if (isConnected) {
-      console.log('SERVER PORT: '.bgCyan, PORT)
-      console.log('SERVER STATUS: CONNECTED'.bgCyan)
+      console.log('SERVER PORT:'.bgBlue, PORT.yellow)
+      console.log('SERVER STATUS:'.bgBlue, 'CONNECTED'.yellow)
     } else {
-      console.log('SERVER PORT: ', PORT)
-      console.log('SERVER STATUS: NOT CONNECTED'.red)
+      console.log('SERVER PORT:'.bgRed, PORT)
+      console.log('SERVER STATUS: NOT CONNECTED'.bgRed)
     }
   },
   // db LOGS
