@@ -5,9 +5,12 @@ const RESPONSES = {
     name: 'Authy SERVER',
     status: 'Running',
     API: 'authy-server',
-    url: GLOBAL.serverUrl(GLOBAL.port) + GLOBAL.apiBase,
+    url: GLOBAL.serverBase(GLOBAL.port) + GLOBAL.apiBase,
     port: GLOBAL.port,
     environment: GLOBAL.env,
+  },
+  auth: {
+    message: 'Auth User',
   },
 }
 

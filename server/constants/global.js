@@ -5,7 +5,8 @@ dotenv.config({
 
 const GLOBAL = {
   apiBase: process.env.API_ROOT,
-  serverUrl: (PORT) => process.env.SERVER + PORT,
+  versionBase: process.env.VERSION_ROOT,
+  serverBase: (PORT) => process.env.SERVER + PORT,
   port: process.env.PORT,
   env: process.env.ENV,
 }

@@ -3,7 +3,7 @@ import express from 'express'
 import { GLOBAL } from '../constants/index.js'
 import { logger } from '../middleware/index.js'
 // routes
-import { serverRoute } from '../routes/index.js'
+import { serverRoute, linkRoutes } from '../routes/index.js'
 // logger
 
 class App {
@@ -15,6 +15,7 @@ class App {
 
   registerRoutes() {
     serverRoute(this.app)
+    linkRoutes(this.app, GLOBAL.apiBase + GLOBAL.versionBase)
   }
 
   start() {
