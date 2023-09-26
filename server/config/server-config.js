@@ -1,7 +1,9 @@
 import express from 'express'
 // constants
 import { GLOBAL } from '../constants/index.js'
-import { logger, serverResponse } from '../middleware/index.js'
+import { logger } from '../middleware/index.js'
+// routes
+import { serverRoute } from '../routes/index.js'
 // logger
 
 class App {
@@ -11,7 +13,9 @@ class App {
     this.registerRoutes()
   }
 
-  registerRoutes() {}
+  registerRoutes() {
+    serverRoute(this.app)
+  }
 
   start() {
     try {

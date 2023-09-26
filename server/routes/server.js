@@ -1,10 +1,7 @@
-import express from 'express'
-import serverResponse from '../middleware'
+import serverResponse from '../middleware/server-response.js'
 
-const app = express()
-
-const serverRoute = () => {
-  app.get('/', serverResponse())
+const serverRoute = (app) => {
+  app.get('/', serverResponse)
 }
 
 export default serverRoute
