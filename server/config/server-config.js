@@ -4,8 +4,13 @@ import { GLOBAL } from '../constants/index.js'
 import { logger } from '../middleware/index.js'
 // routes
 import { serverRoute, linkRoutes } from '../routes/index.js'
-// logger
+// middleware
+import { errorHandler, notFound } from '../middleware/index.js'
 
+/**
+ * @param app - express app
+ * @param registerRoutes - connects and sends the base route to the main traffic
+ */
 class App {
   constructor() {
     this.app = express()

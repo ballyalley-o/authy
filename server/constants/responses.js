@@ -12,6 +12,9 @@ const RESPONSES = {
   auth: {
     message: 'Auth User',
   },
+  err: {
+    404: 'RESOURCE NOT FOUND',
+  },
 }
 
 export default RESPONSES
