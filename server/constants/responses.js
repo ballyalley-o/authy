@@ -12,7 +12,20 @@ const RESPONSES = {
   auth: {
     message: 'Auth User',
   },
+  register: {
+    message: 'Register User',
+  },
+  logout: {
+    message: 'LOG OUT SUCCESSFUL',
+  },
+  profile: {
+    message: 'USER PROFILE',
+  },
+  update: {
+    message: 'UPDATE PROFILE',
+  },
   err: {
+    401: 'AN ERROR HAS OCCURED',
     404: 'RESOURCE NOT FOUND',
   },
 }

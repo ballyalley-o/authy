@@ -16,6 +16,8 @@ class App {
     this.app = express()
     this.app.use(express.json())
     this.registerRoutes()
+    this.app.use(notFound)
+    this.app.use(errorHandler)
   }
 
   registerRoutes() {
