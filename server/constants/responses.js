@@ -9,6 +9,7 @@ const RESPONSES = {
     port: GLOBAL.port,
     environment: GLOBAL.env,
   },
+  mongodb: {},
   auth: {
     message: 'Auth User',
   },
