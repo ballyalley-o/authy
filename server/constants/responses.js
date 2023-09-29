@@ -12,8 +12,13 @@ const RESPONSES = {
   auth: {
     message: 'Auth User',
   },
-  register: {
-    message: 'Register User',
+  register: (user) => {
+    return {
+      message: 'CREATE USER SUCCESSFUL',
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+    }
   },
   logout: {
     message: 'LOG OUT SUCCESSFUL',
@@ -25,8 +30,12 @@ const RESPONSES = {
     message: 'UPDATE PROFILE',
   },
   err: {
+    400: (i) => {
+      return `${i} ALREADY EXISTS`
+    },
     401: 'AN ERROR HAS OCCURED',
     404: 'RESOURCE NOT FOUND',
+    invalid: 'INVALID USER DATA',
   },
 }
 

@@ -1,6 +1,8 @@
 import { RESPONSES } from '../constants/index.js'
 // middleware
-import { asyncHandler } from '../middleware/index.js'
+import { asyncHandler, logger } from '../middleware/index.js'
+// model
+import { User } from '../models/index.js'
 
 // @desc Auth user/set token
 // @route POST /api/v1/users/auth
@@ -13,7 +15,24 @@ const authUser = asyncHandler(async (req, res) => {
 // @route POST /api/v1/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
-  res.status(200).json(RESPONSES.register)
+  const { name, email, password } = req.body
+
+  const userExist = await User.findOne({ email })
+
+  if (userExist) {
+    res.status(400)
+    // logger.error('')
+    throw new Error(RESPONSES.err[400]('USER'))
+  }
+
+  const user = await User.create({ name, email, password })
+
+  if (user) {
+    res.status(201).json(RESPONSES.register(user))
+  } else {
+    res.status(400)
+    throw new Error(RESPONSES.err.invalid)
+  }
 })
 
 // @desc Logout User
