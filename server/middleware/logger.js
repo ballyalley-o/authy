@@ -3,11 +3,11 @@ import 'colors'
 const logger = {
   // custom
   custom: (message, color) => console.log(message[color]),
-  // error LOG
+  // error
   error: (message) => console.log(message.bgRed),
   // info
   info: (message) => console.log(message.bgBlue),
-  // server LOG
+  // server
   server: (PORT, isConnected) => {
     if (isConnected) {
       console.log('SERVER PORT:'.bgBlue, PORT.yellow)
@@ -17,10 +17,10 @@ const logger = {
       console.log('SERVER STATUS: NOT CONNECTED'.bgRed)
     }
   },
-  // db LOGS
-  db: (host, dbName, isConnected) => {
-    console.log('DB HOST: '.bgGreen, host.yellow)
-    console.log('DB NAME: '.bgGreen, dbName.yellow)
+  // db
+  db: (db, isConnected) => {
+    console.log('DB HOST: '.bgGreen, db.connection.host.yellow)
+    console.log('DB NAME: '.bgGreen, db.connection.name.yellow)
     if (isConnected) {
       console.log('DB STATUS: '.bgGreen, 'CONNECTED'.green)
     } else {

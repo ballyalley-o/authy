@@ -24,10 +24,9 @@ class App {
 
   async connectDB() {
     try {
-      await connectDB()
-      logger.db(null, null, true)
+      await connectDB(true)
     } catch (error) {
-      console.log(error.message)
+      logger.error(error.message)
     }
   }
 

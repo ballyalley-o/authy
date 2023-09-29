@@ -4,10 +4,10 @@ import { GLOBAL } from '../constants/index.js'
 // logger
 import { logger } from '../middleware/index.js'
 
-const connectDB = async () => {
+const connectDB = async (isConnected) => {
   try {
     const dbConnect = await mongoose.connect(GLOBAL.db_uri)
-    logger.db(GLOBAL.db_host, GLOBAL.db_name, true)
+    logger.db(dbConnect, isConnected)
   } catch (error) {
     logger.error(error.message)
     process.exit(1)
