@@ -18,10 +18,14 @@ const logger = {
     }
   },
   // db LOGS
-  db: (message) => {
-    console.log('DB HOST: ', message.bgGreen)
-    console.log('DB NAME: ', message.bgGreen)
-    console.log('DB STATUS: ', message.bgGreen)
+  db: (host, dbName, isConnected) => {
+    console.log('DB HOST: '.bgGreen, host.yellow)
+    console.log('DB NAME: '.bgGreen, dbName.yellow)
+    if (isConnected) {
+      console.log('DB STATUS: '.bgGreen, 'CONNECTED'.green)
+    } else {
+      console.log('DB STATUS: '.bgGreen, 'NO CONNECTION'.red)
+    }
   },
 }
 

@@ -10,12 +10,12 @@ const GLOBAL = {
   port: process.env.PORT,
   env: process.env.ENV,
   // mongodb
-  uri: process.env.DB_URI,
-  scheme: process.env.DB_SCHEME,
-  host: process.env.DB_HOST,
-  username: process.env.DB_USERNAME,
-  pass: process.env.DB_PW,
-  dbname: process.env.DB_DBNAME,
+  db_uri: process.env.DB_URI,
+  db_scheme: process.env.DB_SCHEME,
+  db_host: process.env.DB_HOST,
+  db_username: process.env.DB_USERNAME,
+  db_pass: process.env.DB_PW,
+  db_name: process.env.DB_DBNAME,
 }
 
 export default GLOBAL

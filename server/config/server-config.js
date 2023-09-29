@@ -6,6 +6,8 @@ import { logger } from '../middleware/index.js'
 import { serverRoute, linkRoutes } from '../routes/index.js'
 // middleware
 import { errorHandler, notFound } from '../middleware/index.js'
+// db
+import connectDB from './db.js'
 
 /**
  * @param app - express app
@@ -18,6 +20,15 @@ class App {
     this.registerRoutes()
     this.app.use(notFound)
     this.app.use(errorHandler)
+  }
+
+  async connectDB() {
+    try {
+      await connectDB()
+      logger.db(null, null, true)
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   registerRoutes() {
