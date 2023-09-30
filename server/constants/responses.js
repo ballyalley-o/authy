@@ -1,6 +1,7 @@
 import { GLOBAL } from '../constants/index.js'
 
 const RESPONSES = {
+  // server
   server: {
     name: 'Authy SERVER',
     status: 'Running',
@@ -9,6 +10,7 @@ const RESPONSES = {
     port: GLOBAL.port,
     environment: GLOBAL.env,
   },
+  // auth
   auth: (user, token) => {
     return {
       message: 'LOGIN SUCCESSFUL',
@@ -17,6 +19,7 @@ const RESPONSES = {
       email: user.email,
     }
   },
+  //  register
   register: (user) => {
     return {
       message: 'CREATE USER SUCCESSFUL',
@@ -25,21 +28,25 @@ const RESPONSES = {
       email: user.email,
     }
   },
+  // logout
   logout: {
     message: 'LOG OUT SUCCESSFUL',
   },
+  //  profile
   profile: (user) => {
     return {
       message: 'WELCOME TO YOUR PROFILE',
       user,
     }
   },
+  //  update profile
   update: (user) => {
     return {
       message: 'UPDATED USER INFO',
       user,
     }
   },
+  //  errors
   err: {
     400: (i) => {
       return `${i} ALREADY EXISTS`
