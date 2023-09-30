@@ -16,6 +16,9 @@ const GLOBAL = {
   db_username: process.env.DB_USERNAME,
   db_pass: process.env.DB_PW,
   db_name: process.env.DB_DBNAME,
+  // jwt
+  jwt_secret: process.env.JWT_SECRET,
+  jwt_exp: process.env.JWT_EXP,
 }
 
 export default GLOBAL

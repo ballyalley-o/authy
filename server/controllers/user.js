@@ -3,6 +3,8 @@ import { RESPONSES } from '../constants/index.js'
 import { asyncHandler, logger } from '../middleware/index.js'
 // model
 import { User } from '../models/index.js'
+// utils
+import { genToken } from '../utils/index.js'
 
 // @desc Auth user/set token
 // @route POST /api/v1/users/auth
@@ -28,6 +30,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({ name, email, password })
 
   if (user) {
+    genToken(res, user._id)
     res.status(201).json(RESPONSES.register(user))
   } else {
     res.status(400)
