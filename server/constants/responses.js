@@ -42,6 +42,8 @@ const RESPONSES = {
     404: 'RESOURCE NOT FOUND',
     invalid: 'INVALID USER DATA',
     invalidCredentials: 'INVALID CREDENTIALS',
+    noToken: 'NOT AUTHORIZED, NO TOKEN PROVIDED',
+    invalidToken: 'NOT AUTHORIZED, INVALID TOKEN',
   },
 }
 

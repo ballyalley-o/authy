@@ -6,6 +6,7 @@ import { logger } from '../middleware/index.js'
 import { serverRoute, linkRoutes } from '../routes/index.js'
 // middleware
 import { errorHandler, notFound } from '../middleware/index.js'
+import cookieParser from 'cookie-parser'
 // db
 import connectDB from './db.js'
 
@@ -18,6 +19,7 @@ class App {
     this.app = express()
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true }))
+    this.app.use(cookieParser())
     this.registerRoutes()
     this.app.use(notFound)
     this.app.use(errorHandler)
