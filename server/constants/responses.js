@@ -9,9 +9,10 @@ const RESPONSES = {
     port: GLOBAL.port,
     environment: GLOBAL.env,
   },
-  auth: (user) => {
+  auth: (user, token) => {
     return {
       message: 'LOGIN SUCCESSFUL',
+      token,
       _id: user._id,
       email: user.email,
     }

@@ -9,7 +9,7 @@ const genToken = (res, userId) => {
   const token = jwt.sign({ userId }, GLOBAL.jwt_secret, {
     expiresIn: GLOBAL.jwt_exp,
   })
-  res.cookie('jwt', token, {
+  res.cookie(GLOBAL.cookie, token, {
     httpOnly: true,
     secure: GLOBAL.env !== ENV,
     sameSite: 'strict',

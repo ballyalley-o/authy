@@ -6,10 +6,11 @@ const maxAge = {
   30: 30 * 24 * 60 * 60 * 1000,
 }
 
+const expire = new Date(0)
 const oneHr = maxAge.one_hr
 const twoHr = maxAge.two_hr
 const sixHr = maxAge.six_hr
 const oneDay = maxAge[1]
 const thirtyDays = maxAge[30]
 
-export { oneHr, twoHr, sixHr, oneDay, thirtyDays }
+export { expire, oneHr, twoHr, sixHr, oneDay, thirtyDays }

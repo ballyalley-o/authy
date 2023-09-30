@@ -5,6 +5,9 @@ import { asyncHandler, logger } from '../middleware/index.js'
 import { User } from '../models/index.js'
 // utils
 import { genToken } from '../utils/index.js'
+import { expire } from '../constants/index.js'
+// constants
+import { GLOBAL } from '../constants/index.js'
 
 // @desc Auth user/set token
 // @route POST /api/v1/users/auth
@@ -13,10 +16,11 @@ const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
 
   const user = await User.findOne({ email })
+  const matchPassword = await user?.matchPassword(password)
 
-  if (user) {
-    genToken(res, user._id)
-    res.status(200).json(RESPONSES.auth(user))
+  if (user && matchPassword) {
+    const token = genToken(res, user._id)
+    res.status(200).json(RESPONSES.auth(user, token))
   } else {
     res.status(401)
     throw new Error(RESPONSES.err.invalidCredentials)
@@ -52,6 +56,11 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route POST /api/v1/users/logout
 // @access Public
 const logoutUser = asyncHandler(async (req, res) => {
+  res.cookie(GLOBAL.cookie, '', {
+    httpOnly: true,
+    expires: expire,
+  })
+
   res.status(200).json(RESPONSES.logout)
 })
 

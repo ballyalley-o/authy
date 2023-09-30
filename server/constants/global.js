@@ -19,6 +19,8 @@ const GLOBAL = {
   // jwt
   jwt_secret: process.env.JWT_SECRET,
   jwt_exp: process.env.JWT_EXP,
+  // token
+  cookie: 'cookie',
 }
 
 export default GLOBAL
