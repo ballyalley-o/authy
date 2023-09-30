@@ -1,4 +1,5 @@
 export { default as logger } from './logger.js'
 export { default as asyncHandler } from './async-handler.js'
 export { default as serverResponse } from './server-response.js'
+export { default as protect } from './protect.js'
 export { notFound, errorHandler } from './error-handler.js'

@@ -68,14 +68,34 @@ const logoutUser = asyncHandler(async (req, res) => {
 // @route GET /api/v1/users/profile
 // @access Private
 const getUserProfile = asyncHandler(async (req, res) => {
-  res.status(200).json(RESPONSES.profile)
+  const user = {
+    _id: req.user._id,
+    name: req.user.name,
+    email: req.user.email,
+  }
+
+  res.status(200).json(RESPONSES.profile(user))
 })
 
 // @desc Update user profile
 // @route POST /api/v1/users/profile
 // @access Private
 const updateProfile = asyncHandler(async (req, res) => {
-  res.status(200).json(RESPONSES.update)
+  const user = await User.findById(req.user._id)
+
+  if (user) {
+    user.name = req.body.name || user.name
+    user.email = req.body.email || user.email
+    if (req.body.password) {
+      user.password = req.body.password
+    }
+
+    const updatedUser = await user.save()
+    res.status(200).json(RESPONSES.update(updatedUser))
+  } else {
+    res.status(404)
+    throw new Error(RESPONSES.err[404]('USER'))
+  }
 })
 
 const userController = {

@@ -28,18 +28,26 @@ const RESPONSES = {
   logout: {
     message: 'LOG OUT SUCCESSFUL',
   },
-  profile: {
-    message: 'USER PROFILE',
+  profile: (user) => {
+    return {
+      message: 'WELCOME TO YOUR PROFILE',
+      user,
+    }
   },
-  update: {
-    message: 'UPDATE PROFILE',
+  update: (user) => {
+    return {
+      message: 'UPDATED USER INFO',
+      user,
+    }
   },
   err: {
     400: (i) => {
       return `${i} ALREADY EXISTS`
     },
     401: 'AN ERROR HAS OCCURED',
-    404: 'RESOURCE NOT FOUND',
+    404: (i) => {
+      return `${i} NOT FOUND`
+    },
     invalid: 'INVALID USER DATA',
     invalidCredentials: 'INVALID CREDENTIALS',
     noToken: 'NOT AUTHORIZED, NO TOKEN PROVIDED',

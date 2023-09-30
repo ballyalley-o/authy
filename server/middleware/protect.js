@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import asyncHandler from './async-handler'
+import asyncHandler from './async-handler.js'
 import { User } from '../models/index.js'
 // global
 import { GLOBAL } from '../constants/index.js'
@@ -15,6 +15,7 @@ const protect = asyncHandler(async (req, res, next) => {
     try {
       const decoded = jwt.verify(token, GLOBAL.jwt_secret)
       req.user = await User.findById(decoded.userId).select('-password')
+      next()
     } catch (error) {
       res.status(401)
       throw new Error(RESPONSES.err.invalidToken)
@@ -25,4 +26,4 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 })
 
-export { protect }
+export default protect
