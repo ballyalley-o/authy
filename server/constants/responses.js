@@ -9,8 +9,12 @@ const RESPONSES = {
     port: GLOBAL.port,
     environment: GLOBAL.env,
   },
-  auth: {
-    message: 'Auth User',
+  auth: (user) => {
+    return {
+      message: 'LOGIN SUCCESSFUL',
+      _id: user._id,
+      email: user.email,
+    }
   },
   register: (user) => {
     return {
@@ -36,6 +40,7 @@ const RESPONSES = {
     401: 'AN ERROR HAS OCCURED',
     404: 'RESOURCE NOT FOUND',
     invalid: 'INVALID USER DATA',
+    invalidCredentials: 'INVALID CREDENTIALS',
   },
 }
 

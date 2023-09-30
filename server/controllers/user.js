@@ -10,7 +10,17 @@ import { genToken } from '../utils/index.js'
 // @route POST /api/v1/users/auth
 // @access Public
 const authUser = asyncHandler(async (req, res) => {
-  res.status(200).json(RESPONSES.auth)
+  const { email, password } = req.body
+
+  const user = await User.findOne({ email })
+
+  if (user) {
+    genToken(res, user._id)
+    res.status(200).json(RESPONSES.auth(user))
+  } else {
+    res.status(401)
+    throw new Error(RESPONSES.err.invalidCredentials)
+  }
 })
 
 // @desc Register user
