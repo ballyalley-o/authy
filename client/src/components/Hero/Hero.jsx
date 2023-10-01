@@ -1,10 +1,20 @@
 import { Container, Card } from 'react-bootstrap'
+//  hooks
+// import { useNavigate } from 'react-router-dom'
+// components
+import { LinkContainer } from 'react-router-bootstrap'
+import { Button } from '@components/Button'
 // constants
 import { DESC } from '@constants'
 // icons
 import { AuthyIcon } from '@icons'
 
 const Hero = () => {
+  //   const navigate = useNavigate()
+
+  //   const handleOnClick = (href) => {
+  //     navigate(href)
+  //   }
   return (
     <div className='py-5'>
       <Container className='d-flex justify-content-center'>
@@ -17,16 +27,12 @@ const Hero = () => {
             {DESC}
           </p>
           <div className='d-flex'>
-            <button
-              //   variant='warning'
-              href='/login'
-              className='button-default'
-            >
-              SIGN IN
-            </button>
-            <button href='/register' className='button-secondary'>
-              REGISTER
-            </button>
+            <Button link='/login' label='SIGN IN' />
+            <Button
+              link='/register'
+              label='REGISTER'
+              className='button-secondary'
+            />
           </div>
         </Card>
       </Container>

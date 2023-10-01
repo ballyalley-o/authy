@@ -1,5 +1,6 @@
 import { Navbar, Nav, Container } from 'react-bootstrap'
-// import { FaSchlix } from 'react-icons/fa'
+// components
+import { LinkContainer } from 'react-router-bootstrap'
 // icon
 import { AuthyIcon } from '@icons'
 
@@ -8,23 +9,22 @@ const Header = () => {
     <header>
       <Navbar bg='warning' variant='dark' expand='lg' collapseOnSelect>
         <Container className='container'>
-          <Navbar.Brand
-            href='/'
-            className='brand text-black text-italic align-center flex-col italic'
-          >
-            {/* <FaSchlix /> */}
-            <AuthyIcon />
-            Authy
-          </Navbar.Brand>
+          <LinkContainer to='/'>
+            <Navbar.Brand className='brand text-black text-italic align-center flex-col italic'>
+              {/* <FaSchlix /> */}
+              <AuthyIcon />
+              Authy
+            </Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto text-black'>
-              <Nav.Link href='/login' className='text-black DMSans'>
-                Sign In
-              </Nav.Link>
-              <Nav.Link href='/signup' className='text-black DMSans'>
-                Register
-              </Nav.Link>
+              <LinkContainer to='/signIn'>
+                <Nav.Link className='text-black DMSans'>Sign In</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/register'>
+                <Nav.Link className='text-black DMSans'>Register</Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>

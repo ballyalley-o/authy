@@ -17,6 +17,7 @@ export default defineConfig({
       '@components': path.resolve(__dirname, 'src/components'),
       '@pages': './pages',
       '@constants': path.resolve(__dirname, 'src/constants'),
+      '@config': path.resolve(__dirname, 'src/config'),
     },
   },
   plugins: [react()],
