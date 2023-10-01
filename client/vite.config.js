@@ -9,6 +9,7 @@ export default defineConfig({
       '@globals': './assets/css/global.css',
       '@root': './App.jsx',
       '@components': './components',
+      '@pages': './pages',
     },
   },
   plugins: [react()],
