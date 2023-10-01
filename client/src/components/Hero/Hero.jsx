@@ -2,7 +2,6 @@ import { Container, Card } from 'react-bootstrap'
 //  hooks
 // import { useNavigate } from 'react-router-dom'
 // components
-import { LinkContainer } from 'react-router-bootstrap'
 import { Button } from '@components/Button'
 // constants
 import { DESC } from '@constants'
