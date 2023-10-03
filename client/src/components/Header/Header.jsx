@@ -10,7 +10,7 @@ const Header = () => {
       <Navbar bg='warning' variant='dark' expand='lg' collapseOnSelect>
         <Container className='container'>
           <LinkContainer to='/'>
-            <Navbar.Brand className='brand text-black text-italic align-center flex-col italic'>
+            <Navbar.Brand className='brand text-black text-italic align-center flex-col italic block Merriweather'>
               {/* <FaSchlix /> */}
               <AuthyIcon />
               Authy

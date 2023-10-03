@@ -1,6 +1,6 @@
 import '@mains'
 import '@globals'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '@bootstrap'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
@@ -10,14 +10,14 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import App from '@root'
-
 // pages
-import { Home } from '@pages'
+import { Home, SignIn } from '@pages'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<Home />} />
+      <Route path='/signIn' element={<SignIn />} />
     </Route>
   )
 )

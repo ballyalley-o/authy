@@ -16,17 +16,15 @@ const Hero = () => {
   //   }
   return (
     <div className='py-5'>
-      <Container className='d-flex justify-content-center'>
+      <Container className='d-flex justify-content-center pt-10'>
         <Card className='p-5 d-flex flex-column align-items-center hero-card bg-dark w-75'>
           <AuthyIcon className='text-8xl w-24 h-24' />
-          <h1 className='text-center mb-4 text-8xl font-bold text-white italic'>
+          <h1 className='text-center mb-4 text-8xl font-bold text-white italic Merriweather'>
             Authy Doody
           </h1>
-          <p className='text-center mb-4 DMSans font-light text-white'>
-            {DESC}
-          </p>
-          <div className='d-flex'>
-            <Button link='/login' label='SIGN IN' />
+          <p className='text-center mb-4 font-light text-white my-20'>{DESC}</p>
+          <div className='d-flex my-20'>
+            <Button link='/signIn' label='SIGN IN' />
             <Button
               link='/register'
               label='REGISTER'

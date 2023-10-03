@@ -12,10 +12,12 @@ export default defineConfig({
     alias: {
       '@mains': './assets/css/index.css',
       '@globals': './assets/css/global.css',
+      '@bootstrap': 'bootstrap/dist/css/bootstrap.min.css',
+      '@toastify': 'react-toastify/dist/ReactToastify.css',
       '@icons': '../../assets/icons',
       '@root': './App.jsx',
       '@components': path.resolve(__dirname, 'src/components'),
-      '@pages': './pages',
+      '@pages': path.resolve(__dirname, 'src/pages'),
       '@constants': path.resolve(__dirname, 'src/constants'),
       '@config': path.resolve(__dirname, 'src/config'),
     },

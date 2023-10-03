@@ -1,6 +1,6 @@
 * {
-  font-family: 'DM Sans', sans-serif;
   font-family: 'Merriweather', serif;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .main {
@@ -26,6 +26,10 @@
 
 .DMSans {
   font-family: 'DM Sans', sans-serif;
+}
+
+.Merriweather {
+  font-family: 'Merriweather', serif;
 }
 
 .gradient {
@@ -57,10 +61,18 @@
   grid-template-columns: 0fr 1fr 1fr;
 }
 
+.link {
+  text-decoration: none;
+}
+
 .button-default {
   @apply DMSans font-bold me-3 bg-yellow-400 p-2 px-4 rounded-lg;
 }
 
 .button-secondary {
   @apply DMSans font-bold me-3 bg-gray-400 p-2 px-4 rounded-lg;
+}
+
+.link-default {
+  @apply link;
 }

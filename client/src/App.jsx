@@ -1,4 +1,4 @@
-import 'react-toastify/dist/ReactToastify.css'
+import '@toastify'
 import { Outlet } from 'react-router-dom'
 // components
 import { Container } from 'react-bootstrap'

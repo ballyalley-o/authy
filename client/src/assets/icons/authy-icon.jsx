@@ -25,7 +25,6 @@ AuthyIcon.propTypes = {
 }
 
 AuthyIcon.defaultProps = {
-  // className: ,
   color: 'white',
 }
 
