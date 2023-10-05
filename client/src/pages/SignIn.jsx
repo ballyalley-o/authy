@@ -43,7 +43,7 @@ const SignIn = () => {
         </Button>
         <Row className='py-3'>
           <Col>
-            New Customer?{' '}
+            New Customer? &nbsp;
             <Link to='/register' className='link-default'>
               Register
             </Link>

@@ -57,12 +57,14 @@ const Register = () => {
           placeholder='confirmPassword'
         />
 
-        <Button type='submit' className='my-5 button-default' label='Register'>
-          Register
-        </Button>
+        <Button
+          type='submit'
+          className='my-5 button-default'
+          label='REGISTER'
+        />
         <Row className='py-3'>
           <Col>
-            Already have an account?
+            Already have an account? &nbsp;
             <Link to='/register' className='link-default'>
               Sign In
             </Link>

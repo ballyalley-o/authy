@@ -17,6 +17,7 @@ const FormGroup = ({
         placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
+        className='text-blue'
       />
     </Form.Group>
   )
@@ -24,7 +25,7 @@ const FormGroup = ({
 
 FormGroup.propTypes = {
   value: PropTypes.string,
-  setValue: PropTypes.string,
+  setValue: PropTypes.func,
   type: PropTypes.string,
   className: PropTypes.string,
   label: PropTypes.string,
