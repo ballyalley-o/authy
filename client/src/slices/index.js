@@ -1,1 +1,2 @@
-export { default as authReducer } from './auth-slice'
+export { default as authReducer } from './auth'
+export { default as apiSlice } from './api'

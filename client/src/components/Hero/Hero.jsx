@@ -1,6 +1,7 @@
 import { Container, Card } from 'react-bootstrap'
 //  hooks
 // import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 // components
 import { Button } from '@components/Button'
 // constants
@@ -9,6 +10,7 @@ import { DESC } from '@constants'
 import { AuthyIcon } from '@icons'
 
 const Hero = () => {
+  const { userInfo } = useSelector((state) => state.auth)
   //   const navigate = useNavigate()
 
   //   const handleOnClick = (href) => {
@@ -24,10 +26,14 @@ const Hero = () => {
           </h1>
           <p className='text-center mb-4 font-light text-white my-20'>{DESC}</p>
           <div className='d-flex my-20'>
-            <Button link='/signIn' label='SIGN IN' />
+            <Button
+              link='/signIn'
+              label={userInfo ? 'Sign Out' : ' Sign In'}
+              style={{ display: 'block' }}
+            />
             <Button
               link='/register'
-              label='REGISTER'
+              label='Register'
               className='button-secondary'
             />
           </div>
