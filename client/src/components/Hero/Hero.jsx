@@ -34,7 +34,8 @@ const Hero = () => {
             <Button
               link='/register'
               label='Register'
-              className='button-secondary'
+              className={userInfo ? 'hidden' : 'button-secondary'}
+              sx={{ border: '2px', color: 'red' }}
             />
           </div>
         </Card>
