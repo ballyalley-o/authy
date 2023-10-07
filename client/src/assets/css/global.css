@@ -24,6 +24,10 @@
   top: 0;
 }
 
+.profile-header-btn {
+  color: purple;
+}
+
 .DMSans {
   font-family: 'DM Sans', sans-serif;
 }
