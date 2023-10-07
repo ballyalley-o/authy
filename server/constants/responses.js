@@ -16,6 +16,7 @@ const RESPONSES = {
       message: 'LOGIN SUCCESSFUL',
       token,
       _id: user._id,
+      name: user.name,
       email: user.email,
     }
   },
@@ -29,8 +30,8 @@ const RESPONSES = {
     }
   },
   // logout
-  logout: {
-    message: 'LOG OUT SUCCESSFUL',
+  signout: {
+    message: 'SIGN OUT SUCCESSFUL',
   },
   //  profile
   profile: (user) => {

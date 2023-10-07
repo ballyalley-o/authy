@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { FormContainer } from '@components/Form'
+import { Loader } from '@components/Default'
 // import { Button } from '@components/Button'
 // hooks
 import { useDispatch, useSelector } from 'react-redux'
-import { useLoginMutation } from '@slices/user'
+import { useSigninMutation } from '@slices/user'
 import { setCredentials } from '@slices/auth'
 // assets
 import { toast } from 'react-toastify'
@@ -16,7 +17,7 @@ const SignIn = () => {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const [login, { isLoading, error }] = useLoginMutation()
+  const [signin, { isLoading, error }] = useSigninMutation()
   const { userInfo } = useSelector((state) => state.auth)
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await login({ email, password }).unwrap()
+      const res = await signin({ email, password }).unwrap()
       dispatch(setCredentials({ ...res }))
       toast.success('Signed In')
       console.log('signed in')
@@ -59,13 +60,14 @@ const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
+
         <Button
           disabled={isLoading}
           type='submit'
           variant='warning'
           className='mt-3'
         >
-          Sign In
+          {isLoading ? <Loader /> : 'Sign In'}
         </Button>
         {/* <Button type='submit' className='my-5 button-default' label='SIGN IN'>
           Sign In

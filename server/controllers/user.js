@@ -55,13 +55,13 @@ const registerUser = asyncHandler(async (req, res) => {
 // @desc Logout User
 // @route POST /api/v1/users/logout
 // @access Public
-const logoutUser = asyncHandler(async (req, res) => {
+const signOutUser = asyncHandler(async (req, res) => {
   res.cookie(GLOBAL.cookie, '', {
     httpOnly: true,
     expires: expire,
   })
 
-  res.status(200).json(RESPONSES.logout)
+  res.status(200).json(RESPONSES.signout)
 })
 
 // @desc Get user profile
@@ -101,7 +101,7 @@ const updateProfile = asyncHandler(async (req, res) => {
 const userController = {
   authUser,
   registerUser,
-  logoutUser,
+  signOutUser,
   getUserProfile,
   updateProfile,
 }

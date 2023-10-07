@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.post('/', userController.registerUser)
 router.post('/auth', userController.authUser)
-router.post('/logout', userController.logoutUser)
+router.post('/signout', userController.signOutUser)
 router
   .route('/profile')
   .get(protect, userController.getUserProfile)
