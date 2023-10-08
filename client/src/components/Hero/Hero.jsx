@@ -1,16 +1,19 @@
 import { Container, Card } from 'react-bootstrap'
-//  hooks
+//  @hooks
 // import { useNavigate } from 'react-router-dom'
+import { useRegisterMutation } from '@slices/user'
 import { useSelector } from 'react-redux'
-// components
+// @components
 import { Button } from '@components/Button'
-// constants
+import { Loader } from '@components/Default'
+// @constants
 import { DESC } from '@constants'
-// icons
+// @icons
 import { AuthyIcon } from '@icons'
 
 const Hero = () => {
   const { userInfo } = useSelector((state) => state.auth)
+  const [{ isLoading }] = useRegisterMutation()
   //   const navigate = useNavigate()
 
   //   const handleOnClick = (href) => {
@@ -28,15 +31,16 @@ const Hero = () => {
           <div className='d-flex my-20'>
             <Button
               link='/signIn'
-              label={userInfo ? 'Sign Out' : ' Sign In'}
-              style={{ display: 'block' }}
+              label='Sign In'
+              className={userInfo ? 'hidden' : ''}
             />
             <Button
               link='/register'
-              label='Register'
+              label='Join now'
               className={userInfo ? 'hidden' : 'button-secondary'}
-              sx={{ border: '2px', color: 'red' }}
-            />
+            >
+              {!userInfo || !isLoading ? 'Join Us' : <Loader />}
+            </Button>
           </div>
         </Card>
       </Container>
