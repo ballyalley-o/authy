@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Form, Row, Col, Button } from 'react-bootstrap'
-import { FormContainer } from '@components/Form'
+import { FormContainer, FormGroup } from '@components/Form'
 import { Loader } from '@components/Default'
 // import { Button } from '@components/Button'
 // hooks
@@ -42,36 +42,28 @@ const SignIn = () => {
     <FormContainer>
       <h1 className='text-6xl my-6'>Sign In</h1>
       <Form onSubmit={handleSubmit}>
-        <Form.Group className='my-2' controlId='email'>
-          <Form.Label>Email Address</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Enter Email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className='my-2' controlId='password'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Enter Password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-
+        <FormGroup
+          value={email}
+          setValue={setEmail}
+          type='email'
+          label='Email'
+          placeholder='Email'
+        />
+        <FormGroup
+          value={password}
+          setValue={setPassword}
+          type='password'
+          label='Password'
+          placeholder='Enter Password'
+        />
         <Button
           disabled={isLoading}
           type='submit'
           variant='warning'
-          className='mt-3'
+          className='my-10 button-default'
         >
           {isLoading ? <Loader /> : 'Sign In'}
         </Button>
-        {/* <Button type='submit' className='my-5 button-default' label='SIGN IN'>
-          Sign In
-        </Button> */}
         <Row className='py-3'>
           <Col>
             New Customer? &nbsp;
