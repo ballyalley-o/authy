@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { LinkContainer } from 'react-router-bootstrap'
 
-const Button = ({ link, onClick, label, type, className, sx }) => {
+const Button = ({ link, onClick, children, type, className, sx }) => {
   return (
     <LinkContainer to={link}>
       <button
@@ -10,7 +10,7 @@ const Button = ({ link, onClick, label, type, className, sx }) => {
         type={type}
         style={{ sx }}
       >
-        {label}
+        {children}
       </button>
     </LinkContainer>
   )
@@ -19,7 +19,7 @@ const Button = ({ link, onClick, label, type, className, sx }) => {
 Button.propTypes = {
   link: PropTypes.any,
   onClick: PropTypes.func,
-  label: PropTypes.string,
+  children: PropTypes.string,
   className: PropTypes.string,
   type: PropTypes.string,
   sx: PropTypes.object,
