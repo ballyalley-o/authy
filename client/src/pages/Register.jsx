@@ -1,9 +1,15 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Form, Row, Col } from 'react-bootstrap'
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+// @hooks
+import { useDispatch, useSelector } from 'react-redux'
+import { useRegisterMutation } from '@slices/user'
+import { setCredentials } from '@slices/auth'
+// @components
+import { Form, Row, Col, Button } from 'react-bootstrap'
 import { FormContainer, FormGroup } from '@components/Form'
-import { Button } from '@components/Button'
-// assets
+import { Loader } from '@components/Default'
+// @assets
 import { toast } from 'react-toastify'
 
 const Register = () => {
@@ -11,17 +17,30 @@ const Register = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { userInfo } = useSelector((state) => state.auth)
+  const [register, { isLoading }] = useRegisterMutation()
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/')
+    }
+  }, [navigate, userInfo])
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const registered = false
-
-    console.log('submitted')
-    if (registered) {
-      toast.success('Registration Successful')
+    if (password !== confirmPassword) {
+      toast.error("Passwords doesn't match")
     } else {
-      toast.error('Failed to Register')
+      try {
+        const res = await register({ email, name, password }).unwrap()
+        dispatch(setCredentials({ ...res }))
+        toast.success('Registration Successful')
+      } catch (error) {
+        toast.error(error?.data?.message || error.error)
+      }
     }
   }
   return (
@@ -52,20 +71,23 @@ const Register = () => {
         <FormGroup
           value={confirmPassword}
           setValue={setConfirmPassword}
-          type='confirmPassword'
-          label='confirmPassword'
-          placeholder='confirmPassword'
+          type='password'
+          label='Confirm Password'
+          placeholder='Confirm Password'
         />
 
         <Button
           type='submit'
           className='my-5 button-default'
-          label='REGISTER'
-        />
+          variant='warning'
+          disabled={isLoading}
+        >
+          {isLoading ? <Loader /> : 'Register'}
+        </Button>
         <Row className='py-3'>
           <Col>
             Already have an account? &nbsp;
-            <Link to='/register' className='link-default'>
+            <Link to='/signin' className='link-default'>
               Sign In
             </Link>
           </Col>
