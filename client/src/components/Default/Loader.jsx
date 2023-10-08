@@ -8,8 +8,11 @@ const Loader = () => {
       style={{
         width: '15px',
         height: '15px',
-        margin: 'auto',
+        // margin: 'auto',
+        marginLeft: '12px',
+        marginRight: '12px',
         display: 'block',
+        justifyContent: 'center',
       }}
     ></Spinner>
   )
