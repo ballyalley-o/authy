@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { useEffect } from 'react'
 import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap'
 import { signout } from '@slices/auth'
 // @hooks
@@ -13,10 +14,9 @@ import { AuthyIcon } from '@icons'
 import { toast } from 'react-toastify'
 
 const Header = () => {
+  const { userInfo } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { userInfo } = useSelector((state) => state.auth)
-
   const [signoutAuth, { isLoading }] = useSignoutMutation()
 
   const handleSignOut = async () => {

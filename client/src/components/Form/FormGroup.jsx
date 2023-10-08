@@ -33,7 +33,7 @@ FormGroup.propTypes = {
 }
 
 FormGroup.defaultProps = {
-  className: 'my-2',
+  className: 'my-3',
 }
 
 export default FormGroup
