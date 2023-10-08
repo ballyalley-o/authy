@@ -68,13 +68,14 @@ const signOutUser = asyncHandler(async (req, res) => {
 // @route GET /api/v1/users/profile
 // @access Private
 const getUserProfile = asyncHandler(async (req, res) => {
-  const user = {
-    _id: req.user._id,
-    name: req.user.name,
-    email: req.user.email,
-  }
+  const user = await User.findById(req.user._id)
 
-  res.status(200).json(RESPONSES.profile(user))
+  if (user) {
+    res.json(RESPONSES.profile(user))
+  } else {
+    res.status(404)
+    throw new Error(RESPONSES.err[404]('USER'))
+  }
 })
 
 // @desc Update user profile
@@ -92,7 +93,8 @@ const updateProfile = asyncHandler(async (req, res) => {
     }
 
     const updatedUser = await user.save()
-    res.status(200).json(RESPONSES.update(updatedUser))
+
+    res.json(RESPONSES.update(updatedUser))
   } else {
     res.status(404)
     throw new Error(RESPONSES.err[404]('USER'))
@@ -106,4 +108,5 @@ const userController = {
   getUserProfile,
   updateProfile,
 }
+
 export default userController

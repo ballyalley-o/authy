@@ -1,9 +1,13 @@
 import mongoose from 'mongoose'
-// constants
+// @constants
 import { GLOBAL } from '../constants/index.js'
-// logger
+// @logger
 import { logger } from '../middleware/index.js'
 
+/**
+ *
+ * @param {bool} isConnected - response to confirm if db is connected
+ */
 const connectDB = async (isConnected) => {
   try {
     const dbConnect = await mongoose.connect(GLOBAL.db_uri)

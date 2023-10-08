@@ -1,6 +1,6 @@
 import express from 'express'
 import userController from '../controllers/user.js'
-// middleware
+// @middleware
 import { protect } from '../middleware/index.js'
 
 const router = express.Router()

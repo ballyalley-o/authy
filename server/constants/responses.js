@@ -37,14 +37,18 @@ const RESPONSES = {
   profile: (user) => {
     return {
       message: 'WELCOME TO YOUR PROFILE',
-      user,
+      _id: user._id,
+      name: user.name,
+      email: user.email,
     }
   },
   //  update profile
   update: (user) => {
     return {
       message: 'UPDATED USER INFO',
-      user,
+      _id: user._id,
+      name: user.name,
+      email: user.email,
     }
   },
   //  errors
