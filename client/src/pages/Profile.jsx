@@ -18,14 +18,16 @@ const Profile = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
   const { userInfo } = useSelector((state) => state.auth)
   const [updateInfo, { isLoading }] = useUpdateUserMutation()
 
   useEffect(() => {
-    setName(userInfo?.name)
-    setEmail(userInfo?.email)
+    setName(userInfo.name)
+    setEmail(userInfo.email)
   }, [userInfo.name, userInfo.email])
 
   const handleSubmit = async (e) => {
@@ -40,7 +42,8 @@ const Profile = () => {
           email,
           password,
         }).unwrap()
-        dispatch(setCredentials({ res }))
+
+        dispatch(setCredentials({ ...res }))
         toast.success('Your Information is updated')
       } catch (error) {
         toast.error(error?.data?.message || error.error)

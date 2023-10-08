@@ -9,10 +9,10 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom'
+import App from '@root'
 // @redux
 import store from '@store'
 import { Provider } from 'react-redux'
-import App from '@root'
 // @pages
 import { Home, SignIn, Register, Profile } from '@pages'
 // @components
