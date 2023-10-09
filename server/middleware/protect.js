@@ -1,11 +1,14 @@
 import jwt from 'jsonwebtoken'
 import asyncHandler from './async-handler.js'
 import { User } from '../models/index.js'
-// global
+// @global
 import { GLOBAL } from '../constants/index.js'
-// constants
+// @constants
 import { RESPONSES } from '../constants/index.js'
 
+/**
+ * protect the route from public access
+ */
 const protect = asyncHandler(async (req, res, next) => {
   let token
 

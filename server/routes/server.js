@@ -1,17 +1,23 @@
 import path from 'path'
 import express from 'express'
-import { GLOBAL } from '../constants/index.js'
+// @global
+import { GLOBAL, PATH } from '../constants/index.js'
+// @middleware
 import { serverResponse } from '../middleware/index.js'
 
+/**
+ *
+ * @param {func} app - express initialize
+ */
 const serverRoute = (app) => {
-  if (GLOBAL.env === 'production') {
+  const PROD_ENV = 'production'
+
+  if (GLOBAL.env === PROD_ENV) {
     const __dirname = path.resolve()
-    app.use(express.static(path.join(__dirname, 'client/dist')))
-    app.get('*', (req, res) =>
-      res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
-    )
+    app.use(express.static(path.join(__dirname, PATH.buildLoc)))
+    app.get('*', (req, res) => res.sendFile(PATH.buildView))
   } else {
-    app.get('/', serverResponse)
+    app.get(PATH.home, serverResponse)
   }
 }
 

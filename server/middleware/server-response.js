@@ -5,6 +5,11 @@ const serverLogger = (PORT, isConnected) => {
   logger.server(PORT, isConnected)
 }
 
+/**
+ * response from server
+ * @param {*} req - request param
+ * @param {*} res - response param
+ */
 const serverResponse = (req, res) => {
   res.send(RESPONSES.server)
 }

@@ -1,13 +1,15 @@
 import { RESPONSES } from '../constants/index.js'
-// middleware
-import { asyncHandler, logger } from '../middleware/index.js'
-// model
+// @middleware
+import { asyncHandler } from '../middleware/index.js'
+// @model
 import { User } from '../models/index.js'
-// utils
+// @utils
 import { genToken } from '../utils/index.js'
 import { expire } from '../constants/index.js'
-// constants
+// @constants
 import { GLOBAL } from '../constants/index.js'
+
+const TAG = 'USER'
 
 // @desc Auth user/set token
 // @route POST /api/v1/users/auth
@@ -37,8 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (userExist) {
     res.status(400)
-    // logger.error('')
-    throw new Error(RESPONSES.err[400]('USER'))
+    throw new Error(RESPONSES.err[400](TAG))
   }
 
   const user = await User.create({ name, email, password })
@@ -74,7 +75,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
     res.json(RESPONSES.profile(user))
   } else {
     res.status(404)
-    throw new Error(RESPONSES.err[404]('USER'))
+    throw new Error(RESPONSES.err[404](TAG))
   }
 })
 
@@ -97,7 +98,7 @@ const updateProfile = asyncHandler(async (req, res) => {
     res.json(RESPONSES.update(updatedUser))
   } else {
     res.status(404)
-    throw new Error(RESPONSES.err[404]('USER'))
+    throw new Error(RESPONSES.err[404](TAG))
   }
 })
 
