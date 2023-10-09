@@ -1,19 +1,25 @@
-import path from 'path'
 import express from 'express'
-// constants
+// @constants
 import { GLOBAL } from '../constants/index.js'
 import { logger } from '../middleware/index.js'
-// routes
+// @routes
 import { serverRoute, linkRoutes } from '../routes/index.js'
-// middleware
+// @middleware
 import { errorHandler, notFound } from '../middleware/index.js'
 import cookieParser from 'cookie-parser'
-// db
+// @db
 import connectDB from './db.js'
 
 /**
- * @param app - express app
- * @param registerRoutes - connects and sends the base route to the main traffic
+ * @param app - express app initialize
+ * @param express.json - body parser from express
+ * @param express.urlencoded - url encoder from express
+ * @param cookieParser - cookier parse
+ * @param notFound - not found error boundary for server
+ * @param errorHandler - error boundary for server
+ * @func start - init the server
+ * @func registerRoutes - connects and sends the base route to the main traffic
+ * @func connectDB - mongodb connect init method
  */
 class App {
   constructor() {
