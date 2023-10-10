@@ -65,6 +65,13 @@
   grid-template-columns: 0fr 1fr 1fr;
 }
 
+.loader {
+  margin-left: 12px;
+  margin-right: 12px;
+  display: block;
+  justify-content: center;
+}
+
 .link {
   text-decoration: none;
 }
@@ -80,3 +87,18 @@
 .link-default {
   @apply link;
 }
+
+.form-container {
+  @apply justify-content-md-center mt-5;
+}
+
+.nav_brand-bootstrap {
+  color: #000;
+  font-weight: italic;
+  display: inline-block; /* Make sure the element is an inline-block to center it */
+  margin: 0 auto;
+}
+
+/* .nav_brand {
+  @apply brand nav_brand-bootstrap flex-col Merriweather;
+} */

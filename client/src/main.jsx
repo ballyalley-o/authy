@@ -17,15 +17,17 @@ import { Provider } from 'react-redux'
 import { Home, SignIn, Register, Profile } from '@pages'
 // @components
 import { PrivateRoute } from '@components/Route'
+// @constants
+import { PATH } from '@constants'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<App />}>
-      <Route index={true} path='/' element={<Home />} />
-      <Route path='/signIn' element={<SignIn />} />
-      <Route path='/register' element={<Register />} />
+    <Route path={PATH.home} element={<App />}>
+      <Route index={true} path={PATH.home} element={<Home />} />
+      <Route path={PATH.signIn} element={<SignIn />} />
+      <Route path={PATH.register} element={<Register />} />
       <Route element={<PrivateRoute />}>
-        <Route path='/profile' element={<Profile />} />
+        <Route path={PATH.profile} element={<Profile />} />
       </Route>
     </Route>
   )

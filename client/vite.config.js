@@ -14,6 +14,7 @@ export default defineConfig({
       '@globals': './assets/css/global.css',
       '@bootstrap': 'bootstrap/dist/css/bootstrap.min.css',
       '@toastify': 'react-toastify/dist/ReactToastify.css',
+      '@styles': path.resolve(__dirname, 'src/assets/styles'),
       '@icons': '../../assets/icons',
       '@root': './App.jsx',
       '@components': path.resolve(__dirname, 'src/components'),

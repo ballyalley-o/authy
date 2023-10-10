@@ -12,6 +12,8 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { AuthyIcon } from '@icons'
 // @assets
 import { toast } from 'react-toastify'
+import * as _ from '@styles'
+import { PATH, SNACKS } from '@constants'
 
 const Header = () => {
   const { userInfo } = useSelector((state) => state.auth)
@@ -23,8 +25,8 @@ const Header = () => {
     try {
       await signoutAuth().unwrap()
       dispatch(signout())
-      toast.success('Sign out successful')
-      navigate('/')
+      toast.success(SNACKS.signout)
+      navigate(PATH.home)
     } catch (error) {
       toast.error(error)
     }
@@ -32,9 +34,9 @@ const Header = () => {
   return (
     <header>
       <Navbar bg='warning' expand='lg' collapseOnSelect>
-        <Container className='container'>
-          <LinkContainer to='/'>
-            <Navbar.Brand className='brand text-black text-italic align-center flex-col italic block Merriweather'>
+        <Container className={_.StyledContainer}>
+          <LinkContainer to={PATH.home}>
+            <Navbar.Brand>
               <AuthyIcon />
               Authy
             </Navbar.Brand>

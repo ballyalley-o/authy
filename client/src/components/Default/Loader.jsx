@@ -1,21 +1,29 @@
+import PropTypes from 'prop-types'
 import { Spinner } from 'react-bootstrap'
+import * as _ from '@styles'
 
-const Loader = () => {
+const Loader = ({ w, h }) => {
   return (
     <Spinner
       animation='border'
       role='status'
+      className={_.Loader}
       style={{
-        width: '15px',
-        height: '15px',
-        // margin: 'auto',
-        marginLeft: '12px',
-        marginRight: '12px',
-        display: 'block',
-        justifyContent: 'center',
+        width: `${w}` + 'px',
+        height: `${h}` + 'px',
       }}
     ></Spinner>
   )
+}
+
+Loader.propTypes = {
+  w: PropTypes.number,
+  h: PropTypes.number,
+}
+
+Loader.defaultProps = {
+  w: 15,
+  h: 15,
 }
 
 export default Loader
