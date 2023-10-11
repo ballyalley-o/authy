@@ -8,10 +8,15 @@ import { useUpdateUserMutation } from '@slices/user'
 import { setCredentials } from '@slices/auth'
 // @components
 import { Form, Button, Row, Col } from 'react-bootstrap'
-import { FormContainer, FormGroup } from '@components/Form'
+import { FormContainer, FormGroup, FormHeader } from '@components/Form'
 // @assets
 import { Loader } from '@components/Default'
 import { toast } from 'react-toastify'
+// @styles
+import * as _ from '@styles'
+import * as sets from '@sets'
+// @constants
+import { HEADER, SNACKS, PATH } from '@constants'
 
 const Profile = () => {
   const [name, setName] = useState('')
@@ -33,7 +38,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
-      toast.error("Passwords doesn't match")
+      toast.error(SNACKS.password_err)
     } else {
       try {
         const res = await updateInfo({
@@ -44,7 +49,7 @@ const Profile = () => {
         }).unwrap()
 
         dispatch(setCredentials({ ...res }))
-        toast.success('Your Information is updated')
+        toast.success(SNACKS.updated)
       } catch (error) {
         toast.error(error?.data?.message || error.error)
       }
@@ -53,44 +58,19 @@ const Profile = () => {
 
   return (
     <FormContainer>
-      <h1 className='text-6xl my-6'>Update your Info</h1>
+      <FormHeader update />
       <Form onSubmit={handleSubmit}>
-        <FormGroup
-          value={name}
-          setValue={setName}
-          type='name'
-          label='Name'
-          placeholder='Enter Name'
-        />
-        <FormGroup
-          value={email}
-          setValue={setEmail}
-          type='email'
-          label='Email'
-          placeholder='Email'
-        />
-        <FormGroup
-          value={password}
-          setValue={setPassword}
-          type='password'
-          label='Password'
-          placeholder='Password'
-        />
+        <FormGroup value={name} setValue={setName} {...sets.form_name} />
+        <FormGroup value={email} setValue={setEmail} {...sets.form_email} />
+        <FormGroup value={password} setValue={setPassword} {...sets.form_pw} />
         <FormGroup
           value={confirmPassword}
           setValue={setConfirmPassword}
-          type='password'
-          label='Confirm Password'
-          placeholder='Confirm Password'
+          {...sets.form_pw_confirm}
         />
 
-        <Button
-          type='submit'
-          className='my-5 button-default'
-          variant='warning'
-          disabled={isLoading}
-        >
-          {isLoading ? <Loader /> : 'Update'}
+        <Button disabled={isLoading} {...sets.form_submit}>
+          {isLoading ? <Loader /> : HEADER.update_btn}
         </Button>
       </Form>
     </FormContainer>
