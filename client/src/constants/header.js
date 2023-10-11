@@ -1,5 +1,7 @@
 const HEADER = {
   brand: 'Authy',
+  brand_hero: 'Authy Doody',
+  join: 'Join now',
   profile: 'Profile',
   signin: 'Sign In',
   signout: 'Sign Out',

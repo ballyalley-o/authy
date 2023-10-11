@@ -7,39 +7,30 @@ import { useSelector } from 'react-redux'
 import { Button } from '@components/Button'
 import { Loader } from '@components/Default'
 // @constants
-import { DESC } from '@constants'
+import { DESC, HEADER, PATH } from '@constants'
 // @icons
 import { AuthyIcon } from '@icons'
+// @styles
+import * as _ from '@styles'
 
 const Hero = () => {
   const { userInfo } = useSelector((state) => state.auth)
   const [{ isLoading }] = useRegisterMutation()
-  //   const navigate = useNavigate()
 
-  //   const handleOnClick = (href) => {
-  //     navigate(href)
-  //   }
   return (
-    <div className='py-5'>
-      <Container className='d-flex justify-content-center pt-10'>
-        <Card className='p-5 d-flex flex-column align-items-center hero-card bg-dark w-75'>
-          <AuthyIcon className='text-8xl w-24 h-24' />
-          <h1 className='text-center mb-4 text-8xl font-bold text-white italic Merriweather'>
-            Authy Doody
-          </h1>
-          <p className='text-center mb-4 font-light text-white my-20'>{DESC}</p>
-          <div className='d-flex my-20'>
+    <div className={_.StyledHeroWrapperDiv}>
+      <Container className={_.StyledHeroContainer}>
+        <Card className={_.StyledHeroCard}>
+          <AuthyIcon className={_.StyledHeroBrandIcon} />
+          <h1 className={_.StyledHeroBrandLabel}>{HEADER.brand_hero}</h1>
+          <p className={_.StyledHeroDesc}>{DESC}</p>
+          <div className={_.StyledHeroWrapperBtn}>
             <Button
-              link='/signIn'
-              label='Sign In'
-              className={userInfo ? 'hidden' : ''}
-            />
-            <Button
-              link='/register'
-              label='Join now'
-              className={userInfo ? 'hidden' : 'button-secondary'}
+              link={PATH.register}
+              label={HEADER.join}
+              className={_.StyledHeroBtn(userInfo)}
             >
-              {!userInfo || !isLoading ? 'Join Us' : <Loader />}
+              {!userInfo || !isLoading ? HEADER.join : <Loader />}
             </Button>
           </div>
         </Card>

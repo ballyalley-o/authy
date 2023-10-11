@@ -17,3 +17,21 @@ export const StyledFormRow = classNames('py-3')
 export const StyledFormLink = classNames('link-default')
 export const StyledFormBtn = classNames('my-10 px-4 button-default')
 export const StyledLoaderDiv = classNames('px-3')
+//  @hero
+export const StyledHeroWrapperDiv = classNames('py-5')
+export const StyledHeroBrandIcon = classNames('text-8xl w-24 h-24')
+export const StyledHeroBrandLabel = classNames(
+  'text-center mb-4 text-8xl font-bold text-white italic Merriweather'
+)
+export const StyledHeroContainer = classNames(
+  'd-flex justify-content-center pt-10'
+)
+export const StyledHeroCard = classNames(
+  'p-5 d-flex flex-column align-items-center hero-card bg-dark w-75'
+)
+export const StyledHeroDesc = classNames(
+  'text-center mb-4 font-light text-white my-20'
+)
+export const StyledHeroWrapperBtn = classNames('d-flex my-20')
+export const StyledHeroBtn = (user) =>
+  user ? classNames('hidden') : classNames('button-secondary')
