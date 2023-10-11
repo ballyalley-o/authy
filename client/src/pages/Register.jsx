@@ -66,7 +66,7 @@ const Register = () => {
         <Row className={_.StyledFormRow}>
           <Col>
             {HEADER.redir_signin}
-            <Link to={PATH.singin} className={_.StyledFormLink}>
+            <Link to={PATH.signin} className={_.StyledFormLink}>
               {HEADER.signin}
             </Link>
           </Col>
