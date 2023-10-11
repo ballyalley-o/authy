@@ -7,10 +7,15 @@ import { useRegisterMutation } from '@slices/user'
 import { setCredentials } from '@slices/auth'
 // @components
 import { Form, Row, Col, Button } from 'react-bootstrap'
-import { FormContainer, FormGroup } from '@components/Form'
+import { FormContainer, FormGroup, FormHeader } from '@components/Form'
 import { Loader } from '@components/Default'
 // @assets
 import { toast } from 'react-toastify'
+// @styles
+import * as _ from '@styles'
+import * as sets from '@sets'
+// @constants
+import { PATH, HEADER, SNACKS } from '@constants'
 
 const Register = () => {
   const [name, setName] = useState('')
@@ -24,7 +29,7 @@ const Register = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/')
+      navigate(PATH.home)
     }
   }, [navigate, userInfo])
 
@@ -32,12 +37,12 @@ const Register = () => {
     e.preventDefault()
 
     if (password !== confirmPassword) {
-      toast.error("Passwords doesn't match")
+      toast.error(SNACKS.password_err)
     } else {
       try {
         const res = await register({ email, name, password }).unwrap()
         dispatch(setCredentials({ ...res }))
-        toast.success('Registration Successful')
+        toast.success(SNACKS.registered)
       } catch (error) {
         toast.error(error?.data?.message || error.error)
       }
@@ -45,50 +50,24 @@ const Register = () => {
   }
   return (
     <FormContainer>
-      <h1 className='text-6xl my-6'>Register</h1>
+      <FormHeader register />
       <Form onSubmit={handleSubmit}>
-        <FormGroup
-          value={name}
-          setValue={setName}
-          type='name'
-          label='Name'
-          placeholder='Enter Name'
-        />
-        <FormGroup
-          value={email}
-          setValue={setEmail}
-          type='email'
-          label='Email'
-          placeholder='Email'
-        />
-        <FormGroup
-          value={password}
-          setValue={setPassword}
-          type='password'
-          label='Password'
-          placeholder='Password'
-        />
+        <FormGroup value={name} setValue={setName} {...sets.form_name} />
+        <FormGroup value={email} setValue={setEmail} {...sets.form_email} />
+        <FormGroup value={password} setValue={setPassword} {...sets.form_pw} />
         <FormGroup
           value={confirmPassword}
           setValue={setConfirmPassword}
-          type='password'
-          label='Confirm Password'
-          placeholder='Confirm Password'
+          {...sets.form_pw_confirm}
         />
-
-        <Button
-          type='submit'
-          className='my-5 button-default'
-          variant='warning'
-          disabled={isLoading}
-        >
-          {isLoading ? <Loader /> : 'Register'}
+        <Button disabled={isLoading} {...sets.form_submit}>
+          {isLoading ? <Loader /> : HEADER.register}
         </Button>
-        <Row className='py-3'>
+        <Row className={_.StyledFormRow}>
           <Col>
-            Already have an account? &nbsp;
-            <Link to='/signin' className='link-default'>
-              Sign In
+            {HEADER.redir_signin}
+            <Link to={PATH.singin} className={_.StyledFormLink}>
+              {HEADER.signin}
             </Link>
           </Col>
         </Row>
