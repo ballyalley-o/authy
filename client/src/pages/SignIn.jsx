@@ -2,15 +2,20 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Form, Row, Col, Button } from 'react-bootstrap'
-import { FormContainer, FormGroup } from '@components/Form'
+import { FormContainer, FormGroup, FormHeader } from '@components/Form'
 import { Loader } from '@components/Default'
 // import { Button } from '@components/Button'
-// hooks
+// @hooks
 import { useDispatch, useSelector } from 'react-redux'
 import { useSigninMutation } from '@slices/user'
 import { setCredentials } from '@slices/auth'
-// assets
+// @assets
 import { toast } from 'react-toastify'
+import * as sets from '@sets'
+// @styles
+import * as _ from '@styles'
+// @constants
+import { PATH, SNACKS, HEADER } from '@constants'
 
 const SignIn = () => {
   const [email, setEmail] = useState('')
@@ -22,7 +27,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/')
+      navigate(PATH.home)
     }
   }, [navigate, userInfo])
 
@@ -31,44 +36,26 @@ const SignIn = () => {
     try {
       const res = await signin({ email, password }).unwrap()
       dispatch(setCredentials({ ...res }))
-      toast.success('Signed In')
-      console.log('signed in')
-      navigate('/')
+      toast.success(SNACKS.signedin)
+      navigate(PATH.home)
     } catch (err) {
       toast.error(err?.data?.message || err.error)
     }
   }
   return (
     <FormContainer>
-      <h1 className='text-6xl my-6'>Sign In</h1>
+      <FormHeader />
       <Form onSubmit={handleSubmit}>
-        <FormGroup
-          value={email}
-          setValue={setEmail}
-          type='email'
-          label='Email'
-          placeholder='Email'
-        />
-        <FormGroup
-          value={password}
-          setValue={setPassword}
-          type='password'
-          label='Password'
-          placeholder='Enter Password'
-        />
-        <Button
-          disabled={isLoading}
-          type='submit'
-          variant='warning'
-          className='my-10 button-default'
-        >
-          {isLoading ? <Loader /> : 'Sign In'}
+        <FormGroup value={email} setValue={setEmail} {...sets.form_email} />
+        <FormGroup value={password} setValue={setPassword} {...sets.form_pw} />
+        <Button disabled={isLoading} {...sets.form_submit}>
+          {isLoading ? <Loader /> : HEADER.signin}
         </Button>
-        <Row className='py-3'>
+        <Row className={_.StyledFormRow}>
           <Col>
-            New Customer? &nbsp;
-            <Link to='/register' className='link-default'>
-              Register
+            {HEADER.redir_reg}
+            <Link to={PATH.register} className={_.StyledFormLink}>
+              {HEADER.register}
             </Link>
           </Col>
         </Row>

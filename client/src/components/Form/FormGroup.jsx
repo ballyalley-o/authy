@@ -1,23 +1,17 @@
 import PropTypes from 'prop-types'
 import { Form } from 'react-bootstrap'
+// @styles
+import { StyledInputMargin } from '@styles'
 
-const FormGroup = ({
-  value,
-  setValue,
-  type,
-  // className,
-  label,
-  placeholder,
-}) => {
+const FormGroup = ({ value, setValue, type, label, placeholder }) => {
   return (
-    <Form.Group className={''} controlId={value}>
-      <Form.Label>{label}</Form.Label>
+    <Form.Group className={StyledInputMargin} controlId={value}>
+      <Form.Label>{value && label}</Form.Label>
       <Form.Control
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className='text-blue'
       />
     </Form.Group>
   )
