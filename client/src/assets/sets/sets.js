@@ -43,5 +43,5 @@ export const form_pw_confirm = {
 export const form_submit = {
   type: 'submit',
   variant: 'warning',
-  className: 'my-10 button-default',
+  className: _.StyledFormBtn,
 }
