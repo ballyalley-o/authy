@@ -13,7 +13,8 @@ import { AuthyIcon } from '@icons'
 // @assets
 import { toast } from 'react-toastify'
 import * as _ from '@styles'
-import { PATH, SNACKS } from '@constants'
+import * as sets from '@sets'
+import { PATH, SNACKS, HEADER } from '@constants'
 
 const Header = () => {
   const { userInfo } = useSelector((state) => state.auth)
@@ -33,47 +34,38 @@ const Header = () => {
   }
   return (
     <header>
-      <Navbar bg='warning' expand='lg' collapseOnSelect>
-        <Container className={_.StyledContainer}>
+      <Navbar {...sets.navbar}>
+        <Container className={_.StyledNavContainer}>
           <LinkContainer to={PATH.home}>
-            <Navbar.Brand>
+            <Navbar.Brand className={_.StyledNavBrand}>
               <AuthyIcon />
-              Authy
+              {HEADER.brand}
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className='ms-auto text-black'>
+          <Navbar.Toggle aria-controls={sets.nav_toggle} />
+          <Navbar.Collapse id={sets.nav_toggle}>
+            <Nav className={_.StyledNavCollapse}>
               {userInfo ? (
                 <>
-                  <NavDropdown
-                    title={userInfo.name}
-                    id='username'
-                    className='text-primary'
-                    style={{ color: 'red' }}
-                  >
-                    <LinkContainer to='/profile'>
-                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                  <NavDropdown title={userInfo.name} {...sets.nav_dropdown}>
+                    <LinkContainer to={PATH.profile}>
+                      <NavDropdown.Item>{HEADER.profile}</NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Item
                       onClick={handleSignOut}
                       disabled={isLoading}
                     >
-                      Sign Out
+                      {HEADER.signout}
                     </NavDropdown.Item>
                   </NavDropdown>
                 </>
               ) : (
                 <>
-                  <LinkContainer to='/signIn'>
-                    <Nav.Link className={userInfo ? 'd-none' : 'text-black'}>
-                      Sign In
-                    </Nav.Link>
+                  <LinkContainer to={PATH.signin}>
+                    <Nav.Link>{HEADER.signin}</Nav.Link>
                   </LinkContainer>
-                  <LinkContainer to='/register'>
-                    <Nav.Link className={userInfo ? 'd-none' : 'text-black'}>
-                      Register
-                    </Nav.Link>
+                  <LinkContainer to={PATH.register}>
+                    <Nav.Link>{HEADER.register}</Nav.Link>
                   </LinkContainer>
                 </>
               )}
