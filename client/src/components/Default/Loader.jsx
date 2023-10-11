@@ -4,15 +4,17 @@ import * as _ from '@styles'
 
 const Loader = ({ w, h }) => {
   return (
-    <Spinner
-      animation='border'
-      role='status'
-      className={_.Loader}
-      style={{
-        width: `${w}` + 'px',
-        height: `${h}` + 'px',
-      }}
-    ></Spinner>
+    <div className={_.StyledLoaderDiv}>
+      <Spinner
+        animation='border'
+        role='status'
+        className={_.Loader}
+        style={{
+          width: `${w}` + 'px',
+          height: `${h}` + 'px',
+        }}
+      ></Spinner>
+    </div>
   )
 }
 
