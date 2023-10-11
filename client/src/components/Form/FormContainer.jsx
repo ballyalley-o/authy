@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types'
 // components
 import { Container, Row, Col } from 'react-bootstrap'
+// @styles
+import * as _ from '@styles'
 
 const FormContainer = ({ children }) => {
   return (
-    <Container>
-      <Row className=''>
-        <Col xs={12} md={6} className='card p-5'>
+    <Container className={_.StyledContainerMargin}>
+      <Row className={_.StyledContainer}>
+        <Col xs={12} md={6}>
           {children}
         </Col>
       </Row>

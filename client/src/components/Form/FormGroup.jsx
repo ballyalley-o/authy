@@ -5,12 +5,12 @@ const FormGroup = ({
   value,
   setValue,
   type,
-  className,
+  // className,
   label,
   placeholder,
 }) => {
   return (
-    <Form.Group className={className} controlId={value}>
+    <Form.Group className={''} controlId={value}>
       <Form.Label>{label}</Form.Label>
       <Form.Control
         type={type}
